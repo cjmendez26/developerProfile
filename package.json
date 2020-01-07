@@ -1,0 +1,22 @@
+{
+  "name": "hw9",
+  "version": "1.0.0",
+  "description": "Profile Generator On this project First user will be promted with favorite color and user name. The nmp inquirer sounds useful for such commands. after the a pdf will load with *bio image *users location *#of repos *#of followers *#of stars *3of followers For this I will need to use   github api  npm html-pdf",
+  "main": "hw9.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjmendez26/hw9.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjmendez26/hw9/issues"
+  },
+  "homepage": "https://github.com/cjmendez26/hw9#readme",
+  "dependencies": {
+    "inquirer": "^7.0.3"
+  }
+}
