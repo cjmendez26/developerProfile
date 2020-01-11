@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cjmendez26/hw9#readme",
   "dependencies": {
+    "axios": "^0.19.1",
     "inquirer": "^7.0.3"
   }
 }

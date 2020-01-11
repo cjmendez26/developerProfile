@@ -1,1 +1,48 @@
 /node_modules
+
+
+// var userLocation = "California"; // this should come from github api or google maps api
+
+// const outputHTML = `
+// <!DOCTYPE html>
+// <html lang="en">
+
+// <head>
+//     <meta charset="UTF-8">
+//     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+//         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+//     <title>Profile Generator</title>
+// </head>
+
+// <body>
+//     Profile Generator
+//     <div class="card " id="image">
+//         <img src="..." class="rounded mx-auto d-block" alt="...">
+//     </div>
+//     <div class="card" id="location">
+//         Location: ${userLocation}
+//     </div>
+//     <div class="card" style="width: 18rem;">
+//         <div class="card-header" id="github">
+//             GitHub
+//         </div>
+//         <ul class="list-group list-group-flush">
+//             <li class="list-group-item" id="repos">Repositories:</li>
+//             <li class="list-group-item" id="followers">Followers:</li>
+//             <li class="list-group-item" id="following">Following:</li>
+//             <li class="list-group-item" id="stars">Stars:</li>
+//         </ul>
+//     </div>
+
+// </body>
+
+// </html>
+
+// `
+
+
+// fs.writeFile("output.html", outputHTML, function() {
+//     // once file is written to html, use html-to-pdf on that file
+// });
+
+// skip fs.writeFile and just use this, maybe
