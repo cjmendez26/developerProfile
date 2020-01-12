@@ -1,48 +1,59 @@
-// const inquirer = require('inquirer');
-// const html_pdf = require('html_pdf');
-// const fs = require('fs');
+const fs = require("fs");
+const util = require("util");
 
-// pdf.create(outputHTML, options).toFile('./businesscard.pdf', function(err, res) {
-//     if (err) return console.log(err);
-//     console.log(res); // { filename: '/app/businesscard.pdf' }
-//   });
+// Promisify file manipulators
+const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
-const axios = require("axios");
-var username = "cjmendez26";
-// axios.get("https://api.github.com/users/" + username + "/repos")
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//  });
-// axios.get("https://api.github.com/images/error/" + username + "/gif")
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
-axios.get("https://api.github.com/users/" + username + "/followers")
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-axios.get("https://api.github.com/users/" + username + "following{/other_user}")
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  axios.get("https://api.github.com/users/" + username + "starred{/owner}{/repo}")
-  .then(function (response) {
-    console.log(response);
-  })
-    .catch(function(error){
-      console.log(error);
-  });
+/**
+ * Preset color schemes
+ */
+const colors = {
+  green: {
+    wrapperBackground: "#E6E1C3",
+    headerBackground: "green",
+    headerColor: "black",
+    photoBorderColor: "black"
+  },
+  blue: {
+    wrapperBackground: "#5F64D3",
+    headerBackground: "#26175A",
+    headerColor: "white",
+    photoBorderColor: "#73448C"
+  },
+  pink: {
+    wrapperBackground: "#879CDF",
+    headerBackground: "#FF8374",
+    headerColor: "white",
+    photoBorderColor: "#FEE24C"
+  },
+  red: {
+    wrapperBackground: "#DE9967",
+    headerBackground: "#870603",
+    headerColor: "white",
+    photoBorderColor: "white"
+  }
+};
 
+/** @returns {Promise<String>} A promise of the HTML template string loaded from file.  */
+const html = async () => await readFile("./src/template.html", "UTF-8");
+
+/**
+ * Fills in the HTML template string
+ * @param {*} data
+ * @param {string} toFill
+ * @returns {string} filled HTML template as string
+ */
+const fill = async (data, toFill) => {
+  if (typeof toFill === "undefined") toFill = await html();
+
+  for (const k in data) {
+    if (typeof data[k] === "object") toFill = fill(data[k], toFill);
+    else toFill = toFill.replace(new RegExp(`_${k}_`, "gmi"), data[k]);
+  }
+
+  return toFill;
+};
+
+module.exports = { fill, colors, util: { readFile, writeFile } };
 
